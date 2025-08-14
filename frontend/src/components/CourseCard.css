@@ -1,0 +1,36 @@
+/* src/components/CourseCard.css */
+
+/* This makes the card clickable without the default blue underline */
+.course-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Makes the link take up the full card space */
+}
+
+.course-card {
+  background-color: #33373f;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  height: 100%; /* Ensures cards in a row have the same height */
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.course-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: #61dafb;
+  font-size: 1.4rem;
+}
+
+.course-card p {
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: #ccc;
+}
