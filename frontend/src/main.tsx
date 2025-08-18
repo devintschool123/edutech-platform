@@ -7,6 +7,7 @@ import App from './App.tsx';
 import './index.css';
 import LoginPage from './pages/LoginPage'; // <-- Import
 import RegisterPage from './pages/RegisterPage'; // <-- Import
+import EditCoursePage from './pages/EditCoursePage';
 
 // Import our page components
 import HomePage from './pages/HomePage.tsx';
@@ -17,6 +18,12 @@ import CourseDetailPage from './pages/CourseDetailPage';
 import LessonDetailPage from './pages/LessonDetailPage';
 
 import CreateCoursePage from './pages/CreateCoursePage';
+
+import AddLessonPage from './pages/AddLessonPage';
+
+import EditLessonPage from './pages/EditLessonPage'; 
+
+import DashboardPage from './pages/DashboardPage'; 
 
 // Define the routes for the application
 const router = createBrowserRouter([
@@ -33,8 +40,20 @@ const router = createBrowserRouter([
     element: <CourseDetailPage />,
   },
   {
+      path: 'courses/:id/edit', // <-- ADD THIS NEW ROUTE
+      element: <EditCoursePage />,
+    },
+    {
+      path: '/courses/:id/add-lesson', // <-- ADD THIS NEW ROUTE
+      element: <AddLessonPage />,
+    },
+  {
         path: 'lessons/:id', // <-- ADD THIS NEW ROUTE
         element: <LessonDetailPage />,
+    },
+    {
+      path: 'lessons/:id/edit', // <-- ADD THIS NEW ROUTE
+      element: <EditLessonPage />,
     },
       {
         path: 'courses',
@@ -52,6 +71,10 @@ const router = createBrowserRouter([
     path: 'register', // <-- Add Register Route
     element: <RegisterPage />,
   },
+  {
+      path: 'dashboard', // <-- ADD THIS NEW ROUTE
+      element: <DashboardPage />,
+    },
     ],
   },
 ]);

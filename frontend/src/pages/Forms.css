@@ -1,54 +1,68 @@
 /* src/pages/Forms.css */
 .form-container {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  border: 1px solid #444;
+  max-width: 450px;
+  margin: var(--spacing-8) auto;
+  padding: var(--spacing-8);
+  background-color: var(--background-secondary);
   border-radius: 8px;
-  background-color: #2d2d2d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-color);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: var(--spacing-6);
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--spacing-6);
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  text-align: left;
-  font-weight: bold;
+  margin-bottom: var(--spacing-2);
+  font-weight: var(--font-weight-medium);
 }
 
-.form-group input {
+.form-group input,
+.form-group textarea {
   width: 100%;
-  padding: 0.75rem;
-  border-radius: 4px;
-  border: 1px solid #555;
-  background-color: #333;
-  color: white;
+  padding: var(--spacing-2) var(--spacing-4);
   font-size: 1rem;
-  box-sizing: border-box; /* Important for padding and width */
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: #fff;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.4);
 }
 
 .form-button {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.8rem;
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  color: white;
+  background-color: var(--accent-primary);
   border: none;
-  border-radius: 4px;
-  background-color: #61dafb;
-  color: #20232a;
-  font-size: 1.1rem;
-  font-weight: bold;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.2s;
 }
-
 .form-button:hover {
-  background-color: #52b9d8;
+  background-color: var(--accent-primary-hover);
+}
+.form-button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
 }
 
 .form-error {
-  color: #ff4d4d;
-  margin-top: 1rem;
+  color: var(--danger-color);
   text-align: center;
+  margin-top: var(--spacing-4);
 }

@@ -1,36 +1,81 @@
 /* src/pages/CourseDetailPage.css */
 .course-detail-container {
   max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #282c34;
+  margin: var(--spacing-8) auto;
+  padding: var(--spacing-8);
+  background-color: var(--background-secondary);
   border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.course-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
 }
 
 .course-title {
-  font-size: 2.5rem;
-  color: #61dafb;
-  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.course-owner {
+  color: var(--text-secondary);
+  margin-top: var(--spacing-2);
+  margin-bottom: var(--spacing-6);
 }
 
 .course-description {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #f0f0f0;
-  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.course-actions {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-shrink: 0; /* Prevents buttons from shrinking */
+}
+
+.edit-button,
+.delete-button {
+  border: none;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: 6px;
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.9rem;
+}
+
+.edit-button {
+  background-color: var(--accent-primary);
+  color: white;
+}
+.edit-button:hover {
+  background-color: var(--accent-primary-hover);
+  text-decoration: none;
+}
+
+.delete-button {
+  background-color: var(--danger-color);
+  color: white;
+}
+.delete-button:hover {
+  background-color: var(--danger-color-hover);
 }
 
 .divider {
   border: 0;
   height: 1px;
-  background-color: #444;
-  margin: 2rem 0;
+  background-color: var(--border-color);
+  margin: var(--spacing-8) 0;
 }
 
 .lessons-heading {
-  font-size: 2rem;
-  color: #61dafb;
-  margin-bottom: 1.5rem;
+  font-size: 1.75rem;
+  margin-bottom: var(--spacing-6);
 }
 
 .lesson-list {
@@ -38,47 +83,163 @@
   padding: 0;
 }
 
-.lesson-item {
-  background-color: #33373f;
-  padding: 1rem 1.5rem;
+.lesson-item-wrapper {
+  margin-bottom: var(--spacing-2);
+  list-style: none;
+}
+
+.lesson-link {
+  display: block;
   border-radius: 6px;
-  margin-bottom: 1rem;
+  transition: background-color 0.2s, border-color 0.2s;
+  border: 1px solid var(--border-color);
+}
+.lesson-link:hover {
+  text-decoration: none;
+  background-color: #fafafa;
+  border-color: #cbd5e0;
+}
+
+.lesson-item {
+  padding: var(--spacing-4) var(--spacing-6);
   display: flex;
   align-items: center;
-  gap: 1rem;
-  border-left: 4px solid #61dafb;
+  gap: var(--spacing-4);
 }
 
 .lesson-order {
-  font-weight: bold;
-  color: #ccc;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
 }
 
 .lesson-title {
   font-size: 1.1rem;
+}
+
+/* src/pages/CourseDetailPage.css */
+
+/* ... (all your existing styles) ... */
+
+.lessons-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.lessons-heading {
+  margin: 0; /* Remove default margin from h2 */
+}
+
+.add-lesson-button {
+  background-color: var(--accent-primary);
   color: white;
-}
-.lesson-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  transition: background-color 0.2s ease-in-out;
+  padding: var(--spacing-2) var(--spacing-4);
   border-radius: 6px;
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  transition: background-color 0.2s;
+}
+.add-lesson-button:hover {
+  background-color: var(--accent-primary-hover);
+  text-decoration: none;
 }
 
+/* Style for the container of a single lesson row */
+.lesson-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4) var(--spacing-6);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.lesson-item-content:hover {
+  background-color: #fafafa;
+  border-color: #cbd5e0;
+}
+
+.lesson-link {
+    flex-grow: 1; /* Makes the link take up all available space */
+}
 .lesson-link:hover {
-  background-color: #3c414a;
+    text-decoration: none;
 }
 
-.lesson-item {
-  padding: 1rem 1.5rem;
+.lesson-info {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  border-left: 4px solid #61dafb;
+  gap: var(--spacing-4);
 }
 
-.lesson-item-wrapper {
-    margin-bottom: 1rem;
-    list-style: none; /* Add this if it wasn't there already */
+.lesson-actions {
+  display: flex;
+  gap: var(--spacing-4);
+  margin-left: var(--spacing-6); /* Pushes buttons away from the title */
+}
+
+.lesson-edit-button,
+.lesson-delete-button {
+  border: none;
+  padding: var(--spacing-1) var(--spacing-4);
+  border-radius: 6px;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.9rem;
+}
+
+.lesson-edit-button {
+  background-color: #e2e8f0;
+  color: var(--text-secondary);
+}
+.lesson-edit-button:hover {
+  background-color: #cbd5e0;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.lesson-delete-button {
+  background-color: transparent;
+  color: var(--danger-color);
+}
+.lesson-delete-button:hover {
+  background-color: #fef2f2;
+  color: var(--danger-color-hover);
+}
+
+/* We remove the border from the old .lesson-link since it's now on .lesson-item-content */
+.lesson-link {
+    border: none;
+}
+/* src/pages/CourseDetailPage.css */
+
+.enroll-button {
+  background-color: #38a169; /* Green color */
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: var(--font-weight-bold);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.enroll-button:hover {
+  background-color: #2f855a;
+}
+.enroll-button:disabled {
+    background-color: #a0aec0;
+    cursor: not-allowed;
+}
+
+.enrolled-message {
+    display: inline-block;
+    background-color: #f0fff4;
+    color: #2f855a;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    font-weight: var(--font-weight-bold);
+    border: 1px solid #9ae6b4;
 }

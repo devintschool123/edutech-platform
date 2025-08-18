@@ -1,70 +1,67 @@
-/* frontend/src/index.css */
+/* src/index.css */
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* Font & Typography */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --line-height-normal: 1.5;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Color Palette */
+  --background-primary: #f8fafc;     /* Very light grey page background */
+  --background-secondary: #ffffff;    /* White for cards, navbars, containers */
+  --text-primary: #1a202c;          /* Nearly black for headings and titles */
+  --text-secondary: #4a5568;       /* Dark grey for descriptions and subtext */
+  --accent-primary: #3182ce;        /* A strong, professional blue */
+  --accent-primary-hover: #2b6cb0;    /* A darker blue for hover states */
+  --border-color: #e2e8f0;          /* Light grey for borders and dividers */
+  --danger-color: #e53e3e;          /* Red for delete/error actions */
+  --danger-color-hover: #c53030;     /* Darker red for hover */
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Spacing */
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem;  /* 8px */
+  --spacing-4: 1rem;    /* 16px */
+  --spacing-6: 1.5rem;  /* 24px */
+  --spacing-8: 2rem;    /* 32px */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Global Reset and Defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  background-color: var(--background-primary);
+  color: var(--text-secondary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-bold);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: color 0.2s;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+a:hover {
+  text-decoration: underline;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Global message styles */
+.loading-message,
+.error-message {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: var(--spacing-8);
+  color: var(--text-secondary);
 }

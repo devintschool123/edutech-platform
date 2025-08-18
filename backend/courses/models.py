@@ -2,6 +2,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class Course(models.Model):
     title = models.CharField(max_length=200)
@@ -25,3 +26,18 @@ class Lesson(models.Model):
 
     def __str__(self):
         return f"{self.course.title} - Lesson {self.order}: {self.title}"
+
+class Enrollment(models.Model):
+    """
+    Model to represent a student's enrollment in a course.
+    """
+    student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    enrolled_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        # This ensures a student can only enroll in a course once.
+        unique_together = ('student', 'course')
+
+    def __str__(self):
+        return f"{self.student.username} enrolled in {self.course.title}"

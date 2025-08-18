@@ -4,18 +4,20 @@ import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import { useAuthStore } from './stores/authStore';
-import './App.css';
+import { useEnrollmentStore } from './stores/enrollmentStore';
 
 function App() {
-  // Get the initialize action from our store
-  const initialize = useAuthStore((state) => state.initialize);
+  const user = useAuthStore((state) => state.user);
+  const fetchEnrollments = useEnrollmentStore((state) => state.fetchEnrollments);
 
-  // Use the useEffect hook to run our initialize action ONCE when the app loads
+  // This is now the ONLY effect needed for this logic.
+  // It will run when `user` changes (i.e., on login/logout).
   useEffect(() => {
-    initialize();
-  }, [initialize]);
+    if (user) {
+      fetchEnrollments();
+    }
+  }, [user, fetchEnrollments]);
 
-  // The rest of the app renders as before
   return (
     <>
       <Navbar />

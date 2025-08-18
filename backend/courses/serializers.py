@@ -1,25 +1,37 @@
 # backend/courses/serializers.py
 
 from rest_framework import serializers
-from .models import Course, Lesson # Make sure Lesson is imported
+from .models import Course, Lesson, Enrollment
 
 # --- DEFINE LESSON SERIALIZER FIRST ---
-# We define this first, so it's available for the CourseSerializer to use.
 class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
-        fields = ['id', 'title', 'content', 'order']
+        # THE FIX: We add 'course' to this list. This tells the serializer to 
+        # accept a course ID when creating/updating a lesson.
+        fields = ['id', 'course', 'title', 'content', 'order']
 
+class EnrollmentSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Enrollment model.
+    The student is automatically set to the current user.
+    """
+    # We set the student field to be read-only because we will set it
+    # automatically in the view based on the authenticated user.
+    student = serializers.ReadOnlyField(source='student.username')
+
+    class Meta:
+        model = Enrollment
+        fields = ['id', 'student', 'course', 'enrolled_at']
 
 # --- DEFINE COURSE SERIALIZER SECOND ---
-# Now, when Python reaches this point, it knows what LessonSerializer is.
 class CourseSerializer(serializers.ModelSerializer):
-    # This field uses the LessonSerializer we defined above.
+    # This field uses the LessonSerializer we just defined.
+    # It remains 'read_only' here because we don't manage lessons
+    # through the course endpoint.
     lessons = LessonSerializer(many=True, read_only=True)
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Course
-        # Add 'lessons' to the list of fields to include in the API output.
         fields = ['id', 'title', 'description', 'owner', 'created_at', 'updated_at', 'lessons']
-
